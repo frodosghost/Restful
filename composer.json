@@ -1,0 +1,23 @@
+{
+    "name": "manhattan/restful",
+    "description": "Base RESTful interface for php.",
+    "keywords": ["rest", "restful"],
+    "homepage": "https://github.com/frodosghost/Restful",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "James Rickard",
+            "email": "james@frodosghost.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.2",
+        "kriswallsmith/buzz": ">=0.7"
+    },
+    "target-dir": "Manhattan/Restful",
+    "autoload": {
+        "psr-0": {"Restful": "src/"}
+    },
+    "version": "1.0.0"
+}
