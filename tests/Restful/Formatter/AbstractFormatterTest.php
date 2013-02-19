@@ -13,6 +13,9 @@ class AbstractFormatterTest extends \PHPUnit_Framework_TestCase
         $formatter->addData(array('foo' => 'bar'));
 
         $this->assertInstanceOf('\ArrayIterator', $formatter->getData());
+
+        $this->assertEquals('foo', $formatter->getData()->key());
+        $this->assertEquals('bar', $formatter->getData()->current());
     }
 
 }
