@@ -3,7 +3,10 @@
 namespace Restful\Formatter;
 
 /**
- * This formatter formats the data for a XML query
+ * This formatter formats AbstractData for an XML query.
+ *
+ * Follows the format of providing a single multidimensional array, with
+ * the nested array containing the fields and values.
  */
 class XmlFormatter extends AbstractFormatter
 {
@@ -42,8 +45,9 @@ class XmlFormatter extends AbstractFormatter
     }
 
     /**
-     * Quick method for returning a string in which a tag wraps some text
-     * content.
+     * Quick method for returning an XML tagged string
+     *
+     * @return string
      */
     private function wrap($tag, $content)
     {
