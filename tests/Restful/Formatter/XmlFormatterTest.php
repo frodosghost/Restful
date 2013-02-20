@@ -24,7 +24,7 @@ class XmlFormatterTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf('Restful\Formatter\TestData', $formatter->getData());
 
-        $this->assertEquals('<root-foo></root-foo>', $formatter->format());
+        $this->assertEquals('<root-foo><foo>bar</foo></root-foo>', $formatter->format());
     }
 
 }

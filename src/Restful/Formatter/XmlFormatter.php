@@ -14,12 +14,31 @@ class XmlFormatter extends AbstractFormatter
     {
         $xml = '<' . $this->getRootNode() . '>';
 
+        foreach ($this->getNodes() as $field => $property) {
+            $xml .= $this->wrap($field, $property);
+        }
+
         return $xml . '</' . $this->getRootNode() . '>';
     }
 
+    /**
+     * Accessor to return Root Node
+     * 
+     * @return string
+     */
     private function getRootNode()
     {
         return $this->getData()->getIterator()->key();
+    }
+
+    /**
+     * Accessor to return nodes from Data
+     * 
+     * @return ArrayIterator
+     */
+    private function getNodes()
+    {
+        return $this->getData()->getRecursiveIterator()->getChildren();
     }
 
     /**
@@ -32,30 +51,3 @@ class XmlFormatter extends AbstractFormatter
     }
 
 }
-
-    /*
-     * Constructs a basic XML document that follows the conventions laid out
-     * by eWay. See: http://www.eway.com.au/support/xml_structure.aspx?p=cvn
-     *
-     * @return string An XML formated string.
-     *
-    public function getXml()
-    {
-        $xml = '<' . self::ROOT_TAG . '>';
-
-        foreach (self::$fields as $field => $properties)
-        {
-            $content = isset ($this->data[$field]) ? $this->data[$field] : '';
-
-            // Trim the content to fit within the maximum length specified.
-            if (strlen ($content) > $properties['max']) {
-                $content = substr ($content, 0, $properties['max']);
-            }
-
-            $xml .= $this->wrap(self::FIELD_PREFIX . $field, $content);
-        }
-
-        return $xml . '</' . self::ROOT_TAG . '>';
-    }
-*/
-
