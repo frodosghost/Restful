@@ -24,6 +24,21 @@ abstract class AbstractData implements IteratorAggregate
      */
     abstract public function validate();
 
+    public function keys()
+    {
+        return array_keys($this->data);
+    }
+
+    public function values()
+    {
+        return array_values($this->data);
+    }
+
+    public function count()
+    {
+        return count($this->data);
+    }
+
     /**
      * Returns the data associated with the class.
      */
