@@ -40,6 +40,19 @@ abstract class AbstractData implements IteratorAggregate
     }
 
     /**
+     * Merge data into the array
+     * 
+     * @param  array  $data
+     * @return AbstractData
+     */
+    public function append(array $data)
+    {
+        $this->data = array_merge($this->data, $data);
+
+        return $this;
+    }
+
+    /**
      * Returns the Iterator associated with the class.
      */
     public function getIterator()

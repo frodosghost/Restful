@@ -25,6 +25,17 @@ class AbstractDataTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(2, $data->count());
     }
 
+    public function testAppend()
+    {
+        $data = new TestData();
+
+        $data->append(array('bar' => 'foo'));
+
+        $this->assertEquals(array('bar'), $data->keys());
+        $this->assertEquals(array('foo'), $data->values());
+        $this->assertEquals(1, $data->count());
+    }
+
     public function testNestedArrays()
     {
         $data = new TestData(array('foo' => array(
