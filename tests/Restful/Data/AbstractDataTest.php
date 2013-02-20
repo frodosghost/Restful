@@ -25,6 +25,20 @@ class AbstractDataTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(2, $data->count());
     }
 
+    public function testNestedArrays()
+    {
+        $data = new TestData(array('foo' => array(
+            'bar' => 'foo')
+        ));
+
+        $this->assertEquals(array('foo'), $data->keys());
+        $this->assertTrue($data->getRecursiveIterator()->hasChildren());
+        $this->assertInstanceOf('\ArrayIterator', $data->getRecursiveIterator()->getChildren());
+        
+        $this->assertEquals('bar', $data->getRecursiveIterator()->getChildren()->key());
+        $this->assertEquals('foo', $data->getRecursiveIterator()->getChildren()->current());
+    }
+
 }
 
 class TestData extends AbstractData

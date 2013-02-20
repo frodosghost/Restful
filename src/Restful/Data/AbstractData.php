@@ -2,7 +2,7 @@
 
 namespace Restful\Data;
 
-use IteratorAggregate, ArrayIterator;
+use IteratorAggregate, ArrayIterator, RecursiveArrayIterator;
 
 /**
  * @author James Rickard <james@frodosghost.com>
@@ -40,11 +40,19 @@ abstract class AbstractData implements IteratorAggregate
     }
 
     /**
-     * Returns the data associated with the class.
+     * Returns the Iterator associated with the class.
      */
     public function getIterator()
     {
         return new ArrayIterator($this->data);
+    }
+
+    /**
+     * Returns the RecursiveIterator associated with the class.
+     */
+    public function getRecursiveIterator()
+    {
+        return new RecursiveArrayIterator($this->data);
     }
 
 }
