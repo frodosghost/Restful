@@ -3,19 +3,26 @@
 namespace Restful\Formatter;
 
 use Restful\Formatter\AbstractFormatter;
+use Restful\Data\AbstractData;
 
 class AbstractFormatterTest extends \PHPUnit_Framework_TestCase
 {
+    private $testData;
+
+    public function setUp()
+    {
+        $this->testData = new TestAbstractData(array('foo' => array(
+            'foo' => 'bar'
+        )));
+    }
+
     public function testHasType()
     {
         $formatter = new TestFormatter();
 
-        $formatter->addData(array('foo' => 'bar'));
+        $formatter->addData($this->testData);
 
-        $this->assertInstanceOf('\ArrayIterator', $formatter->getData());
-
-        $this->assertEquals('foo', $formatter->getData()->key());
-        $this->assertEquals('bar', $formatter->getData()->current());
+        $this->assertInstanceOf('Restful\Formatter\TestAbstractData', $formatter->getData());
     }
 
 }
@@ -23,6 +30,13 @@ class AbstractFormatterTest extends \PHPUnit_Framework_TestCase
 class TestFormatter extends AbstractFormatter
 {
     public function format()
+    {
+    }
+}
+
+class TestAbstractData extends AbstractData
+{
+    public function validate()
     {
     }
 }

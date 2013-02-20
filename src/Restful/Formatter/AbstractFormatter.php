@@ -3,7 +3,7 @@
 
 namespace Restful\Formatter;
 
-use ArrayIterator;
+use Restful\Data\AbstractData;
 
 /**
  * @author James Rickard <james@frodosghost.com>
@@ -12,18 +12,18 @@ abstract class AbstractFormatter
 {
 
     /**
-     * @var ArrayIterator
+     * @var Restful\Data\AbstractData
      */
     private $data;
 
     /**
      * Add Data that is to be used within the Formatter
      * 
-     * @param array $data
+     * @param mixed $data
      */
-    public function addData(array $data)
+    public function addData(AbstractData $data)
     {
-        $this->data = new ArrayIterator($data);
+        $this->data = $data;
     }
 
     /**
