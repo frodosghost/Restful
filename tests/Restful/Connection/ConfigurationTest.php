@@ -17,15 +17,4 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('Restful\Connection\Configuration', $handler);
     }
 
-    public function testConstructionPHPError()
-    {
-        $this->setExpectedException('ErrorException');
-        $handler = new Configuration();
-    }
-
-    public function testConstructionPHPErrorWithFirstVariable()
-    {
-        $this->setExpectedException('ErrorException');
-        $handler = new Configuration('foo');
-    }
 }
