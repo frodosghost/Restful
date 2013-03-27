@@ -54,4 +54,8 @@ class XmlFormatter extends AbstractFormatter
         return "<$tag>$content</$tag>";
     }
 
+    public function getContentType()
+    {
+        return 'text/xml';
+    }
 }

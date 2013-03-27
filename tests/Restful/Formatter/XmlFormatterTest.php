@@ -27,6 +27,13 @@ class XmlFormatterTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('<root-foo><foo>bar</foo></root-foo>', $formatter->format());
     }
 
+    public function testContentType()
+    {
+        $formatter = new XmlFormatter();
+
+        $this->assertEquals('text/xml', $formatter->getContentType(), '->getContentType() returns the correct ContentType');
+    }
+
 }
 
 class TestData extends AbstractData
