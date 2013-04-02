@@ -24,7 +24,7 @@ class XmlFormatterTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf('Restful\Formatter\TestData', $formatter->getData());
 
-        $this->assertEquals('<root-foo><foo>bar</foo></root-foo>', $formatter->format());
+        $this->assertEquals('<?xml version="1.0" encoding="UTF-8" ?><root-foo><foo>bar</foo></root-foo>', $formatter->format());
     }
 
     public function testContentType()

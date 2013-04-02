@@ -70,6 +70,6 @@ class XmlFormatter extends AbstractFormatter
 
     public function getContentType()
     {
-        return 'application/xml';
+        return 'text/xml';
     }
 }
