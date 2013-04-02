@@ -15,9 +15,12 @@ class XmlFormatter extends AbstractFormatter
      */
     public function format()
     {
-        $xml = '<' . $this->getRootNode() . '>';
+        $xml = '<?xml version="1.0" encoding="UTF-8" ?><' . $this->getRootNode() . '>';
 
         foreach ($this->getNodes() as $field => $property) {
+            if (is_array($property)) {
+                $property = $this->recursive($property);
+            }
             $xml .= $this->wrap($field, $property);
         }
 
@@ -44,6 +47,17 @@ class XmlFormatter extends AbstractFormatter
         return $this->getData()->getRecursiveIterator()->getChildren();
     }
 
+    private function recursive($nodes)
+    {
+        $xml = '';
+
+        foreach ($nodes as $field => $property) {
+            $xml .= $this->wrap($field, $property);
+        }
+
+        return $xml;
+    }
+
     /**
      * Quick method for returning an XML tagged string
      *
@@ -56,6 +70,6 @@ class XmlFormatter extends AbstractFormatter
 
     public function getContentType()
     {
-        return 'text/xml';
+        return 'application/xml';
     }
 }
